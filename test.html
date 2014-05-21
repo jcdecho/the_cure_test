@@ -1,0 +1,40 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+    var display_callback = function (data) {
+        $(this).html('Hello');
+    };
+  $("h1").click(function() {
+    $(this).html('Hello');
+  });
+
+  var callback_function = function(data) {
+    $("p").html("<pre>" + "FOOBAR" + "</pre>");
+  };
+
+  var get_data_function = function(callback) {
+    $.getJSON("https://github.com/jcdecho/the_cure_test/data/playlist_query_1.json",
+        function(callback) {
+            callback("<b>Fake return</b>");
+        });
+    }
+
+
+  $("p").click(function() {
+    get_data_function(callback_function);
+    $(this).html('Bye');
+  });
+});
+
+</script>
+</head> 
+<body>
+<h1>Say Hello</h1>
+<h2></h2>
+<h3>Foo<h3>
+<p>Say Bye</p>
+</body>
+</html>
